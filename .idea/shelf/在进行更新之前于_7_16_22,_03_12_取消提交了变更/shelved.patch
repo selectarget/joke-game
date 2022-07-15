@@ -1,0 +1,542 @@
+Index: src/com/joke/test2/App.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/joke/test2/App.java b/src/com/joke/test2/App.java
+new file mode 100644
+--- /dev/null	(date 1657786066683)
++++ b/src/com/joke/test2/App.java	(date 1657786066683)
+@@ -0,0 +1,7 @@
++package com.joke.test2;
++
++public class App {
++    public static void main(String[] args) {
++        PictureFrame pictureFrame = new PictureFrame();
++    }
++}
+Index: src/com/joke/test2/PictureFrame.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/joke/test2/PictureFrame.java b/src/com/joke/test2/PictureFrame.java
+new file mode 100644
+--- /dev/null	(date 1657912328462)
++++ b/src/com/joke/test2/PictureFrame.java	(date 1657912328462)
+@@ -0,0 +1,337 @@
++package com.joke.test2;
++
++import javax.swing.*;
++import java.awt.*;
++import java.awt.event.ActionEvent;
++import java.awt.event.ActionListener;
++import java.util.Random;
++
++public class PictureFrame extends JFrame {
++
++    //定义一个二维数组
++    private int[][] datas = {
++            {1, 2, 3, 4, 5},
++            {6, 7, 8, 9, 10},
++            {11, 12, 13, 14, 15},
++            {16, 17, 18, 19, 20},
++            {21, 22, 23, 24, 0}
++    };
++    private int x0;
++    private int y0;
++    private JButton shangButton;
++    private JButton xiaButton;
++    private JButton zuoButton;
++    private JButton youButton;
++    private JButton helpButton;
++    private JButton resetButton;
++
++    private JPanel picturePanel;
++
++    private int[][] winData = {
++            {1, 2, 3, 4, 5},
++            {6, 7, 8, 9, 10},
++            {11, 12, 13, 14, 15},
++            {16, 17, 18, 19, 20},
++            {21, 22, 23, 24, 25}
++    };
++
++    public PictureFrame() {
++        //窗体基本设置  方法
++        initFrame();
++        randomData();
++        paintView();
++        addButtonEvent();
++
++
++        //设置窗体可见
++        this.setVisible(true);
++
++    }
++
++    //判断是否成功
++    public boolean isSuccess() {
++        for (int i = 0; i < datas.length; i++) {
++            for (int j = 0; j < datas[i].length; j++) {
++                if (datas[i][j] != winData[i][j]) {
++                    return false;
++                }
++            }
++        }
++        return true;
++    }
++
++    public void success() {
++        datas = new int[][]{
++                {1, 2, 3, 4, 5},
++                {6, 7, 8, 9, 10},
++                {11, 12, 13, 14, 15},
++                {16, 17, 18, 19, 20},
++                {21, 22, 23, 24, 25}
++        };
++        shangButton.setEnabled(false);
++        xiaButton.setEnabled(false);
++        zuoButton.setEnabled(false);
++        youButton.setEnabled(false);
++
++    }
++
++    public void rePaintView() {
++        //移除所有组件
++        picturePanel.removeAll();
++        //遍历数组
++        for (int i = 0; i < datas.length; i++) {
++            for (int j = 0; j < datas[i].length; j++) {
++
++                JLabel jLabel = new JLabel(new ImageIcon("images//joke_" + datas[i][j] + ".jpg"));
++                //System.out.println(data[i][j]);
++                jLabel.setBounds(j * 180, i * 101, 180, 101);
++                picturePanel.add(jLabel);
++            }
++        }
++        this.add(picturePanel);
++
++        //重新绘制
++        picturePanel.repaint();
++    }
++
++
++    //按钮添加事件
++    public void addButtonEvent() {
++        shangButton.addActionListener(new ActionListener() {
++            @Override
++            public void actionPerformed(ActionEvent e) {
++                //System.out.println("上");
++                //边界处理
++                if (x0 == 4) {
++                    return;
++                }
++
++                //位置交换
++                datas[x0][y0] = datas[x0 + 1][y0];
++                datas[x0 + 1][y0] = 0;
++                x0 = x0 + 1;
++                if (isSuccess()) {
++                    success();
++                }
++
++                //调用重绘的方法
++                rePaintView();
++            }
++        });
++        xiaButton.addActionListener(new ActionListener() {
++            @Override
++            public void actionPerformed(ActionEvent e) {
++                //System.out.println("下");
++                //边界处理
++                if (x0 == 0) {
++                    return;
++                }
++
++                //位置交换
++                datas[x0][y0] = datas[x0 - 1][y0];
++                datas[x0 - 1][y0] = 0;
++                x0 = x0 - 1;
++                if (isSuccess()) {
++                    success();
++                }
++
++                //调用重绘的方法
++                rePaintView();
++            }
++        });
++        zuoButton.addActionListener(new ActionListener() {
++            @Override
++            public void actionPerformed(ActionEvent e) {
++                //System.out.println("左");
++                //边界处理
++                if (y0 == 4) {
++                    return;
++                }
++
++                //位置交换
++                datas[x0][y0] = datas[x0][y0 + 1];
++                datas[x0][y0 + 1] = 0;
++                y0 = y0 + 1;
++                if (isSuccess()) {
++                    success();
++                }
++
++                //调用重绘的方法
++                rePaintView();
++            }
++        });
++        youButton.addActionListener(new ActionListener() {
++            @Override
++            public void actionPerformed(ActionEvent e) {
++                //System.out.println("右");
++                //边界处理
++                if (y0 == 0) {
++                    return;
++                }
++
++                //位置交换
++                datas[x0][y0] = datas[x0][y0 - 1];
++                datas[x0][y0 - 1] = 0;
++                y0 = y0 - 1;
++
++                if (isSuccess()) {
++                    success();
++                }
++
++                //调用重绘的方法
++                rePaintView();
++            }
++        });
++        helpButton.addActionListener(new ActionListener() {
++            @Override
++            public void actionPerformed(ActionEvent e) {
++                // System.out.println("帮助");
++                success();
++
++                //重绘
++                rePaintView();
++            }
++        });
++        resetButton.addActionListener(new ActionListener() {
++            @Override
++            public void actionPerformed(ActionEvent e) {
++                // System.out.println("重置");
++                datas = new int[][]{
++                        {1, 2, 3, 4, 5},
++                        {6, 7, 8, 9, 10},
++                        {11, 12, 13, 14, 15},
++                        {16, 17, 18, 19, 20},
++                        {21, 22, 23, 24, 0}
++                };
++                randomData();
++                rePaintView();
++                shangButton.setEnabled(true);
++                xiaButton.setEnabled(true);
++                zuoButton.setEnabled(true);
++                youButton.setEnabled(true);
++            }
++        });
++
++    }
++
++
++    //二维数组打乱
++    public void randomData() {
++        Random r = new Random();
++        for (int i = 0; i < datas.length; i++) {
++            for (int j = 0; j < datas[i].length; j++) {
++                int x = r.nextInt(datas.length);
++                int y = r.nextInt(datas[i].length);
++
++                int temp = datas[i][j];
++                datas[i][j] = datas[x][y];
++                datas[x][y] = temp;
++            }
++        }
++        //记录0图片位置
++        wc:
++        for (int i = 0; i < datas.length; i++) {
++            for (int j = 0; j < datas[i].length; j++) {
++                if (datas[i][j] == 0) {
++                    x0 = i;
++                    y0 = j;
++                    break wc;
++                }
++            }
++        }
++
++
++    }
++
++
++    public void paintView() {
++        //标题
++        JLabel titleLabel = new JLabel("Joke");
++        titleLabel.setFont(new Font("Arial", Font.BOLD, 22));
++        titleLabel.setForeground(Color.white);
++        titleLabel.setBounds(600, 20, 50, 50);
++        this.add(titleLabel);
++
++        //定义一个二维数组
++//        int[][] datas={
++//                {1,2,3,4,5},
++//                {6,7,8,9,10},
++//                {11,12,13,14,15},
++//                {16,17,18,19,20},
++//                {21,22,23,24,25}
++//        };
++        //创建面板
++        picturePanel = new JPanel();
++        picturePanel.setLayout(null);
++        picturePanel.setBounds(50, 100, 900, 506);
++        picturePanel.setBorder(BorderFactory.createLineBorder(Color.white, 3));
++
++        //遍历二维数组
++        //图片按照顺序展示
++        for (int i = 0; i < datas.length; i++) {
++            for (int j = 0; j < datas[i].length; j++) {
++
++                JLabel jLabel = new JLabel(new ImageIcon("images//joke_" + datas[i][j] + ".jpg"));
++                //System.out.println(data[i][j]);
++                jLabel.setBounds(j * 180, i * 101, 180, 101);
++                picturePanel.add(jLabel);
++            }
++        }
++        this.add(picturePanel);
++
++        //参考图
++        JLabel cankaoLable = new JLabel(new ImageIcon("images//cankao.jpg"));
++        cankaoLable.setBounds(980, 100, 267, 150);
++        this.add(cankaoLable);
++
++        //上下左右按钮
++        shangButton = new JButton("上");
++        shangButton.setBounds(1090, 300, 50, 50);
++        this.add(shangButton);
++
++        xiaButton = new JButton("下");
++        xiaButton.setBounds(1090, 400, 50, 50);
++        this.add(xiaButton);
++
++        zuoButton = new JButton("左");
++        zuoButton.setBounds(1040, 350, 50, 50);
++        this.add(zuoButton);
++
++        youButton = new JButton("右");
++        youButton.setBounds(1130, 350, 50, 50);
++        this.add(youButton);
++
++        helpButton = new JButton("帮助");
++        helpButton.setBounds(1050, 550, 50, 50);
++        this.add(helpButton);
++
++        resetButton = new JButton("重置");
++        resetButton.setBounds(1120, 550, 50, 50);
++        this.add(resetButton);
++
++        //背景图
++        JLabel backgroundLable = new JLabel(new ImageIcon("images/bg.jpg"));
++        backgroundLable.setBounds(0, 0, 1280, 720);
++        this.add(backgroundLable);
++
++
++    }
++
++    public void initFrame() {
++        //窗体大小
++        this.setSize(1280, 720);
++        //标题
++        this.setTitle("JOKE Pictures");
++        //居中显示
++        this.setLocationRelativeTo(null);
++        //关闭的时候退出
++        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
++        //位于其他窗体之上
++        this.setAlwaysOnTop(true);
++        //取消默认布局
++        this.setLayout(null);
++
++    }
++
++
++}
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"04df2e04-efbf-45c4-87cf-15a3c87df01e\" name=\"变更\" comment=\"\" />\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"ProjectId\" id=\"2Bu9LAvUT3ub0wCNfP57Zx1GmHI\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"WebServerToolWindowFactoryState\": \"false\"\n  },\n  \"keyToStringList\": {\n    \"GitStage.ChangesTree.GroupingKeys\": [\n      \"directory\",\n      \"module\",\n      \"repository\"\n    ]\n  }\n}]]></component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"应用程序级\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"默认任务\">\n      <changelist id=\"04df2e04-efbf-45c4-87cf-15a3c87df01e\" name=\"变更\" comment=\"\" />\n      <created>1657745051813</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1657745051813</updated>\n    </task>\n    <servers />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 9710d02876fc16a5f96c048f70c972bd05df8242)
++++ b/.idea/workspace.xml	(date 1657912245440)
+@@ -1,26 +1,78 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ChangeListManager">
+-    <list default="true" id="04df2e04-efbf-45c4-87cf-15a3c87df01e" name="变更" comment="" />
++    <list default="true" id="04df2e04-efbf-45c4-87cf-15a3c87df01e" name="变更" comment="">
++      <change afterPath="$PROJECT_DIR$/images/bai.jpg" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/images/bg.jpg" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/images/cankao.jpg" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/images/joke.jpeg" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/images/joke_1.jpg" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/images/joke_10.jpg" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/images/joke_11.jpg" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/images/joke_12.jpg" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/images/joke_13.jpg" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/images/joke_14.jpg" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/images/joke_15.jpg" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/images/joke_16.jpg" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/images/joke_17.jpg" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/images/joke_18.jpg" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/images/joke_19.jpg" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/images/joke_2.jpg" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/images/joke_20.jpg" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/images/joke_21.jpg" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/images/joke_22.jpg" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/images/joke_23.jpg" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/images/joke_24.jpg" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/images/joke_25.jpg" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/images/joke_3.jpg" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/images/joke_4.jpg" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/images/joke_5.jpg" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/images/joke_6.jpg" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/images/joke_7.jpg" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/images/joke_8.jpg" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/images/joke_9.jpg" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/com/joke/test1/App.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/com/joke/test1/PictureFrame.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/com/joke/test2/App.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/com/joke/test2/PictureFrame.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/joke.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/joke.java" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
++  </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="Class" />
++      </list>
++    </option>
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++  </component>
++  <component name="MarkdownSettingsMigration">
++    <option name="stateVersion" value="1" />
+   </component>
+   <component name="ProjectId" id="2Bu9LAvUT3ub0wCNfP57Zx1GmHI" />
+-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
++  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
++    <ConfirmationsSetting value="2" id="Add" />
++    <ConfirmationsSetting value="2" id="Remove" />
++  </component>
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+   <component name="PropertiesComponent"><![CDATA[{
+   "keyToString": {
++    "ASKED_ADD_EXTERNAL_FILES": "true",
+     "RunOnceActivity.OpenProjectViewOnStart": "true",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "WebServerToolWindowFactoryState": "false"
++    "WebServerToolWindowFactoryState": "false",
++    "last_opened_file_path": "/Users/selectarget/Documents/java/joke/src/com/joke/test2",
++    "settings.editor.selected.configurable": "preferences.pluginManager"
+   },
+   "keyToStringList": {
+     "GitStage.ChangesTree.GroupingKeys": [
+@@ -30,6 +82,57 @@
+     ]
+   }
+ }]]></component>
++  <component name="RecentsManager">
++    <key name="CopyFile.RECENT_KEYS">
++      <recent name="$PROJECT_DIR$/src/com/joke/test2" />
++      <recent name="$PROJECT_DIR$/src/images" />
++    </key>
++    <key name="MoveFile.RECENT_KEYS">
++      <recent name="$PROJECT_DIR$" />
++    </key>
++  </component>
++  <component name="RunManager" selected="应用程序.com.joke.test2.App">
++    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="com.joke.App" />
++      <module name="joke" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="com.joke.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="com.joke.test2.App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="com.joke.test2.App" />
++      <module name="joke" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="com.joke.test2.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="joke" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="joke" />
++      <module name="joke" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <recent_temporary>
++      <list>
++        <item itemvalue="应用程序.com.joke.test2.App" />
++        <item itemvalue="应用程序.joke" />
++        <item itemvalue="应用程序.App" />
++      </list>
++    </recent_temporary>
++  </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="默认任务">
+@@ -38,7 +141,26 @@
+       <option name="number" value="Default" />
+       <option name="presentableId" value="Default" />
+       <updated>1657745051813</updated>
++      <workItem from="1657745053105" duration="21578000" />
++      <workItem from="1657805376022" duration="7198000" />
+     </task>
+     <servers />
+   </component>
++  <component name="TypeScriptGeneratedFilesManager">
++    <option name="version" value="3" />
++  </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State />
++          </value>
++        </entry>
++      </map>
++    </option>
++  </component>
++  <component name="VcsManagerConfiguration">
++    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
++  </component>
+ </project>
+\ No newline at end of file
