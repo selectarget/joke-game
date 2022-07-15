@@ -1,26 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="04df2e04-efbf-45c4-87cf-15a3c87df01e" name="变更" comment="" />
+    <list default="true" id="04df2e04-efbf-45c4-87cf-15a3c87df01e" name="变更" comment="">
+      <change afterPath="$PROJECT_DIR$/images/bai.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/cankao.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/joke.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/joke_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/joke_10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/joke_11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/joke_12.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/joke_13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/joke_14.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/joke_15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/joke_16.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/joke_17.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/joke_18.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/joke_19.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/joke_2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/joke_20.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/joke_21.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/joke_22.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/joke_23.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/joke_24.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/joke_25.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/joke_3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/joke_4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/joke_5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/joke_6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/joke_7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/joke_8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/joke_9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/joke/test1/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/joke/test1/PictureFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/joke/test2/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/joke/test2/PictureFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/joke.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/joke.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2Bu9LAvUT3ub0wCNfP57Zx1GmHI" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+    <ConfirmationsSetting value="2" id="Remove" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false"
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/selectarget/Documents/java/joke/src/com/joke/test2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   },
   "keyToStringList": {
     "GitStage.ChangesTree.GroupingKeys": [
@@ -30,6 +82,57 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/com/joke/test2" />
+      <recent name="$PROJECT_DIR$/src/images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager" selected="应用程序.com.joke.test2.App">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.joke.App" />
+      <module name="joke" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.joke.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="com.joke.test2.App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.joke.test2.App" />
+      <module name="joke" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.joke.test2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="joke" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="joke" />
+      <module name="joke" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="应用程序.com.joke.test2.App" />
+        <item itemvalue="应用程序.joke" />
+        <item itemvalue="应用程序.App" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
@@ -38,7 +141,26 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1657745051813</updated>
+      <workItem from="1657745053105" duration="21578000" />
+      <workItem from="1657805376022" duration="7198000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
